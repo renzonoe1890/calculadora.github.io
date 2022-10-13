@@ -1,0 +1,198 @@
+# calculadora.github.io
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+   
+    <title>Calculator!</title>
+
+    <style>
+
+
+
+#gridContenedor{
+    width:480px;
+    height:auto;
+    padding:20px;
+    
+    background:#232323;
+    border:#000 1px solid;
+    border-radius:7px;
+    -webkit-border-radius:7px;
+    -moz-border-radius:7px;
+    overflow: hidden;
+   
+
+
+    display:grid;
+    place-items: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+table {
+    width: 90%;
+  }
+
+button{
+
+
+    width:100px;
+    height:68px;
+    
+    color:#c0c0c0 !important;
+    font-family: "Myriad Pro", Arial, sans-serif;
+    font-size:1.6em;
+    font-weight: 500;
+    letter-spacing: -2px;
+    background-color:#2f2f2f;
+    border: #000 1px solid;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow:#000 0px -1px 0px;
+    box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
+    -webkit-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
+    -moz-box-shadow: inset rgba(255,255,255,0.1) 0px 1px 0px, inset rgba(0,0,0,0.2) 0px -2px 2px;
+    background-image:-moz-linear-gradient(top, #363636 0%, #313234 40%, #2f2f2f 100%);
+    background-image:-webkit-linear-gradient(top, #363636 0%, #313234 40%, #2f2f2f 100%);
+    background-image:linear-gradient(top, #363636 0%, #313234 40%, #2f2f2f 100%);
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    cursor: pointer;
+  }
+
+
+  #pantalla{
+    color: aquamarine;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(38, 161, 55); /* For browsers that do not support gradients */
+    background-image: linear-gradient(rgb(38, 58, 41), rgb(32, 49, 32), rgb(50, 63, 50));
+  }
+  #pantallaMemoria{
+    width: 100%;
+    height: 40px;
+  }
+
+  .ac{
+    width: 100%;
+  }
+
+  
+
+
+
+    </style>
+
+
+
+
+
+
+
+
+    <script>
+        
+      
+        function mostrarResultado(value) {
+        document.getElementById('pantalla').innerHTML = value;
+        //document.getElementById('result2').innerHTML = value;
+                }
+            function tomarValor() {
+                return(document.getElementById('pantalla').innerHTML);
+                    }
+            function add(x) { 
+                var resultado = tomarValor();
+                 if (resultado!='0' || isNaN(x)) mostrarResultado(resultado + x);
+                else mostrarResultado(x);
+                        }
+            function calcular() {
+                var resultado = eval(tomarValor()); 
+                 mostrarResultado(resultado);
+                }
+            function borrar() { 
+             mostrarResultado(0);
+                }
+
+                
+            function memoria1(){
+              memory = tomarValor()
+              borrar()}
+              
+            function memoria2(){
+            document.getElementById('pantallaMemoria').innerHTML = memory;
+                }
+              
+             function borrarTodo(){
+                    memory = 0;
+                    document.getElementById('pantallaMemoria').innerHTML = memory;
+
+                   
+                }
+
+            
+
+    </script>
+
+
+
+
+  </head>
+  <body>
+
+    <div id="gridContenedor">
+    <table>
+        <tr>
+          <td colspan="4"><button id="pantalla">0</button></td>
+          
+        </tr>
+            <td colspan="4"><button id="pantallaMemoria"></button></td>
+        <tr>
+          <td><button onclick="add('1')">1</button></td>
+          <td><button onclick="add('2')">2</button></td>
+          <td><button onclick="add('3')">3</button></td>
+          <td><button id="b1" onclick="add('+')">+</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="add('4')">4</button></td>
+          <td><button onclick="add('5')">5</button></td>
+          <td><button onclick="add('6')">6</button></td>
+          <td><button id ="b1" onclick="add('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="add('7')">7</button></td>
+          <td><button onclick="add('8')">8</button></td>
+          <td><button onclick="add('9')">9</button></td>
+          <td><button id ="b1"  onclick="add('*')">*</button></td>
+        </tr>
+        <tr>
+           
+          <td ><button onclick="add('0')">0</button></td>
+          <td><button id ="b1"  onclick="add('/')">/</button></td>
+          <td ><button id ="b1" onclick="add('.')">.</button></td>
+          <td ><button id ="b1" onclick="calcular()">=</button></td> 
+                  
+        </tr>
+       
+        <tr>
+          <td ><button onclick="memoria1()" id="ms">MS</button></td>
+          <td colspan="2"><button onclick="borrar()" ondblclick="borrarTodo()" class="ac">AC</button></td>
+          <td ><button onclick="memoria2()" id="mc">MC</button></td>
+                      
+        </tr>
+
+      </table>
+      </div>
+    </body>
+  
+  </body>
+</html>
